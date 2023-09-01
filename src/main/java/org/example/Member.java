@@ -3,15 +3,22 @@ package org.example;
 import javax.persistence.*;
 import java.util.Date;
 
+
+// DDL 생성기능에 영향을 주는 어노테이션 다소 추가
+// DDL을 자동 생성할 때만 사용되고, JPA의 실행 로직에는 영향을 주지 않는다.
+// -> 그래도 개발자가 엔티티만 보고도 다양한 제약조건을 파악할 수 있는 장점이 있다.
 @Entity
-@Table(name = "MEMBER")
+@Table(name = "MEMBER", uniqueConstraints = {@UniqueConstraint(
+        name = "NAME_AGE_UNIQUE",
+        columnNames = {"NAME", "AGE"} )})
 public class Member {
 
     @Id
     @Column(name = "ID")
     private String id;
 
-    @Column(name = "NAME")
+    // 컬럼 제약조건 추가
+    @Column(name = "NAME", nullable = false, length = 10)
     private String username;
 
     private Integer age;
