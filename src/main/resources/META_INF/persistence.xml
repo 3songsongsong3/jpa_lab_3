@@ -14,6 +14,10 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.id.new_generator_mappings" value="true"/>
+            <!-- 20230901 추가 -->
+            <!-- 애플리케이션 실행 시점에 데이터베이스 테이블을 자동으로 생성함 -->
+            <!-- 운영 환경에서 사용할 만큼 완벽하지 않으므로 참고 용도로 개발환경에서 사용하는것이 좋다. -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
         </properties>
     </persistence-unit>
 </persistence>
